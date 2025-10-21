@@ -1,18 +1,48 @@
 import random
+import string
 
-def number_generate():
-    print(random.randrange(0, 9)) 
+alpha, symbols, num = string.ascii_letters, string.punctuation, string.digits
 
-def symbol_gen():
-    """ Symbols is from 33 to 47, 58 to 64 """
-    for i in range(33,55):
-        if i >= 48:
-            i+=10
-        print(chr(i))
+def get_len(item):
+    """ Get the length of the list """
+    return len(item) - 1
 
-def letters_gen():
-    """ Letters is from 65 to 90 (Big), 61 to 69 then 6A then 6F, 70 to 79, then 7A (small)"""
-    pass
+def pass_form(length):
+    password = ""
+    print(length)
 
-#I think its better to make a list instead 
+def main():
+    user = ""
+    while user == "":
+        print("\nWelcome to Random Password Generator\n")
+        user = input("  ~~ Include Digit (y or n): ")
+        user += input("  ~~ Include Symbols (y or n): ")
+        user += input("  ~~ Password's Length: ")
+        user = user.lower().strip()
+        user_len = get_len(user) + 1
+
+        if not user[0] == "y" and not user[0] == "n":
+            print("\n ~~ Invalid Input for Digit ~~ \n".upper())
+
+        elif not user[1] == "y" and not user[1] == "n":
+            print("\n ~~ Invalid Input for Symbol ~~ \n".upper())
+        
+        elif user_len > 4 and not user[3].isdigit():
+            print("\n ~~ Password's Length is not a valid input ~~ \n".upper())
+            print(user)
+
+        elif not user[3:user_len].isdigit:
+            print("\n ~~ Password's Length is not a valid input ~~ \n".upper())
+            print(user)
+
+        else:
+            pass_form(user)
+        
+        user = ""
+
+
+
+main()
+
+
 
